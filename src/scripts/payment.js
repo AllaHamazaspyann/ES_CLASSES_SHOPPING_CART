@@ -1,3 +1,5 @@
+import validator from 'validator';
+
 const paymentHtml = () => {
     return (`<div class='item__actions--shipping'>
     <h2>Payment</h2>
@@ -28,5 +30,7 @@ const paymentHtml = () => {
     </form>
   </div>`)
 }
+
+
 
 export default paymentHtml;
