@@ -11,18 +11,43 @@
 <body>
   <div id='container'>
     <div class='item actions'>
-      <div class='item__actions--navbar'>
+      <nav class='item__actions--navbar'>
         <div class='navbar__item--shipping' onclick="handleClick('shipping')">Shipping</div>
         <div class='navbar__item--billing' onclick="handleClick('billing')">Billing</div>
         <div class='navbar__item--payment' onclick="handleClick('payment')">Payment</div>
-      </div>
+      </nav>
       <div id="root">
         
       </div>
+      <div id='details-root' class='details__root'>
+        
+      </div>
     </div>
-    <div class='item orders' id='ordered-items'>
+    <div class='item orders' id='orders'>
       <h3>Order Summary</h3>
-      
+      <div id='ordered-items'>
+
+      </div>
+      <div class='total-sum'>
+        <div class='total-sum__item'>
+          <span>Subtotal</span>
+          <span>$398</span>
+        </div>
+        <div class='total-sum__item'>
+          <span>Shipping</span>
+          <span>Free</span>
+        </div>
+        <div class='total-sum__item'>
+          <span>Taxes</span>
+          <span>$12.12</span>
+        </div>
+        <div class='total-sum__item total-value'>
+          <h4>Total</h4>
+          <div id='total-root'>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
  

@@ -1,4 +1,7 @@
- const shippingHtml = () => {
+import validator from 'validator';
+import isEmail from 'validator/lib/isEmail';
+
+ export const shippingHtml = () => {
     return (`<div class='item__actions--shipping'>
     <h2>Shipping Info</h2>
     <form class='item__actions__form'>
@@ -14,9 +17,15 @@
         <option value=''>Country</option>
       </select>
       <input type='text' placeholder='ZIP'>
-      <button>Continue</button>
+      <input id='continue' type='submit' value='Continue' onclick='handlePageChange(event, "billing")'/>
     </form>
   </div>`)
 }
 
-export default shippingHtml;
+
+const handlePageChange = (e) => {
+  e.preventDefault();
+  console.log('test');
+}
+
+window.handlePageChange  = handlePageChange;

@@ -4,6 +4,7 @@ $grey: #b0afb9;
 $border-color: #b0afb9a6;
 $box-shadow: 0 0 17px -9px #8080808a;
 $text-black: #000000c4;
+$dark-grey: #8e8d94;
 
 @mixin input {
   border: 1px solid $border-color;
@@ -28,12 +29,32 @@ body {
     background-color: #fff;
     margin: 60px auto;
     justify-content: space-between;
-    padding: 30px 40px;
+    padding: 30px 40px 130px;
     border-radius: 6px;
     box-shadow: $box-shadow;
     .item{
       &.actions{
         flex-basis: 54%;
+        #details-root{
+          .order-number{
+            color: #000000;
+          }
+          h2{
+            color: $body-color;
+          }
+          color: $dark-grey;
+          span{
+            display: block;
+            color: #000;
+          }
+          div{
+            margin: 18px 0;
+          }
+          .details__root__email{
+            color: $body-color;
+            display: inline-block;
+          }
+        }
       }
       &.orders{
         flex-basis: 40%;
@@ -76,7 +97,7 @@ body {
           input[placeholder="ZIP"]{
             width: 40%;
           }
-          button{
+          input[type='submit']{
             padding: 12px 20px;
             background-color: #895acd;
             border: 1px solid #895acd;
@@ -85,6 +106,10 @@ body {
             font-size: 18px;
             margin-top: 20px;
             display: block;
+            cursor: pointer;
+            &:hover{
+              opacity: 0.9;
+            }
           }
           &__input--block{
             display: block;
@@ -95,6 +120,8 @@ body {
     }
     .orders{
       &__wrapper{
+        padding-bottom: 8px;
+        border-bottom: 1px solid #d8d9da;
         color: $grey;
         display: flex;
         justify-content: space-between;
@@ -114,6 +141,30 @@ body {
           display: block;
           font-size: 12px;
           margin: 4px 0;
+        }
+      }
+      .total-sum{
+        margin-top: 20px;
+        &__item{
+          display: flex;
+          justify-content: space-between;
+          margin: 7px 0;
+          color: $dark-grey;
+          font-size: 14px;
+          &.total-value{
+            margin-top: 10px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-top: 1px solid #d8d9da;
+          }
+        }
+        h4{
+          margin: 0;
+          color: $body-color;
+        }
+        #total-root{
+          color: $body-color;
+          font-weight: bold;
         }
       }
     }

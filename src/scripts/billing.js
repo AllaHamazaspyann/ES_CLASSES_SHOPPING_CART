@@ -13,7 +13,7 @@ const billingHtml = () => {
         <option value=''>Country</option>
       </select>
       <input type='text' placeholder='ZIP'>
-      <button>Continue</button>
+      <input id='continue' type='submit' value='Continue' onclick='handlePageChange(event, "payment")'/>
     </form>
   </div>`)
 }

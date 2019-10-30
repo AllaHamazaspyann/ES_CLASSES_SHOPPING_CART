@@ -21,7 +21,10 @@ const paymentHtml = () => {
       
       <input type='text' placeholder='Empire Date'>
       <input type='text' placeholder='Security Code'>
-      <button>Pay Securely</button>
+      <input id='continue'
+        type='submit' 
+        value='Pay Securely'
+        onclick='handlePageChange(event, "details")'/>
     </form>
   </div>`)
 }
