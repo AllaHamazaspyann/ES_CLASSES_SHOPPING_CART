@@ -3,6 +3,7 @@ $body-bgc: #e5eaf4;
 $grey: #b0afb9;
 $border-color: #b0afb9a6;
 $box-shadow: 0 0 17px -9px #8080808a;
+$text-black: #000000c4;
 
 @mixin input {
   border: 1px solid $border-color;
@@ -26,6 +27,7 @@ body {
     max-width: 700px;
     background-color: #fff;
     margin: 60px auto;
+    justify-content: space-between;
     padding: 30px 40px;
     border-radius: 6px;
     box-shadow: $box-shadow;
@@ -42,9 +44,18 @@ body {
         max-width: 60%;
         color: #b0afb9;
         display: flex;
+        cursor: pointer;
         justify-content: space-between;
       }
       &--shipping{
+        h2{
+          font-weight: normal;
+        }
+        .payment-info{
+          color: #949498;
+          font-size: 12px;
+          margin-bottom: 30px;
+        }
         .item__actions__form{
           p{
             display: inline-block;
@@ -65,10 +76,44 @@ body {
           input[placeholder="ZIP"]{
             width: 40%;
           }
+          button{
+            padding: 12px 20px;
+            background-color: #895acd;
+            border: 1px solid #895acd;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            display: block;
+          }
           &__input--block{
             display: block;
             width: 100%;
           }
+        }
+      }
+    }
+    .orders{
+      &__wrapper{
+        color: $grey;
+        display: flex;
+        justify-content: space-between;
+        align-content: flex-start;
+        img{
+          max-width: 60px;
+          margin-right: 10px;
+        }
+        h4{
+          margin: 0;
+          color: $grey;
+          font-weight: normal;
+          font-size: 14px;
+        }
+        span{
+          color: $text-black;
+          display: block;
+          font-size: 12px;
+          margin: 4px 0;
         }
       }
     }

@@ -1,10 +1,9 @@
 import '../styles/index.scss';
 
 import shippingHtml from './shipping';
-
-console.log(shippingHtml())
-
-
+import billingHtml from './billing';
+import paymentHtml from './payment';
+import {render} from './ordered-items';
 
 const rootEl = document.getElementById('root');
 
@@ -15,13 +14,13 @@ class navBar {
     this.root = root;
   }
   returnHtml() {
-    this.root.insertAdjacentHTML('beforeend', this.page);
+    this.root.innerHTML = this.page;
   }
 }
-
-const shippingActiveElement = new navBar('shipping', '<p>Shipping</p>', rootEl);
-const billingActiveElement = new navBar('billing', '<p>Billing</p>', rootEl);
-const paymentActiveElement = new navBar('payment', '<p>Payment</p>', rootEl);
+console.log(rootEl);
+const shippingActiveElement = new navBar('shipping', shippingHtml(), rootEl);
+const billingActiveElement = new navBar('billing', billingHtml(), rootEl);
+const paymentActiveElement = new navBar('payment', paymentHtml(), rootEl);
 
 
 const handleClick = (arg) => {
@@ -35,8 +34,9 @@ const handleClick = (arg) => {
 }
 
 
-window.handleClick = handleClick;
-const test = () => console.log('webpack starterkit');
 
-window.test = test;
+window.handleClick = handleClick;
+window.render = render;
+render();
+
 
