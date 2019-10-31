@@ -26,9 +26,11 @@ const paymentHtml = () => {
       <span>Card Number</span>
       <input type='numer' 
              name='card_number' 
+             id='card_number_input'
              placeholder='XXXX XXXX XXXX XXXX XXXX' 
+             pattern="[0-9.]+"
              class='item__actions__form__input--block'
-             onkeypress='handleChangePayment(event)'/>
+             onkeypress='handleChangePayment(event);cc_format(event)'/>
       <div id='card_number' class='item__actions__form__error'></div>
       <input type='text' 
              name='empire_date' 
@@ -83,7 +85,34 @@ const checkIfEmptyPayment = (e) => {
   return false;
 }
 
+// const replaceWith = (e) => {
+//  const input =  document.getElementById('card_number');
+//   input.value.replace(/[\D\s\._\-]+/g, e.target.value);
+// }
+
+const cc_format = (e) => {
+  const value = e.target.value
+  let v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+  let matches = v.match(/\d{4,16}/g);
+  let match = matches && matches[0] || ''
+  let parts = []
+
+  for (let i=0, len=match.length; i<len; i+=4) {
+      parts.push(match.substring(i, i+4))
+  }
+  if (parts.length) {
+    console.log(parts.join(' '))
+    const cardNumber = document.getElementById('card_number_input');
+    const finalValue = parts.join(' ');
+    cardNumber.value = finalValue;
+  } else {
+      return value
+  }
+}
+
+
+
 window.handleChangePayment  = handleChangePayment;
 window.checkIfEmptyPayment = checkIfEmptyPayment;
-
+window.cc_format = cc_format;
 export default paymentHtml;

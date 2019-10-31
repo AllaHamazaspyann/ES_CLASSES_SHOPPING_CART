@@ -31,12 +31,12 @@ const billingHtml = () => {
              class='item__actions__form__input--block'
              onkeypress='handleChangeBilling(event)'/>
       <div id='city' class='item__actions__form__error'></div>          
-      <select name='country' id=''>
+      <select name='Country' id='country'>
         <option value=''>Country</option>
       </select>
-      <div id='country' class='item__actions__form__error'></div> 
+      <div class='item__actions__form__error' id='Country'></div>
       <input type='text' name='zip' placeholder='ZIP' onkeypress='handleChangeBilling(event)'/>
-      <div id='zip' class='item__actions__form__error'></div> 
+      <div id='zip' class='item__actions__form__error'></div>
       <input id='continue'
              type='submit'
              value='Continue'
