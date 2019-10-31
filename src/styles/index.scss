@@ -13,6 +13,7 @@ $dark-grey: #8e8d94;
   margin: 8px 0;
   &:focus{
     outline: none;
+    border: 1px solid $body-color;
   }
 }
 
@@ -78,6 +79,15 @@ body {
           margin-bottom: 30px;
         }
         .item__actions__form{
+          &--inline{
+            display: inline-block;
+            margin-right: 10px;
+            width: 46%;
+            input{
+              width: 100%;
+              margin: 0!important;
+            }
+          }
           p{
             display: inline-block;
             color: $grey;
@@ -180,8 +190,36 @@ body {
       }
     }
   }
+  label{
+    color: $body-color;
+    display: block;
+  }
 }
 
 .active{
   color: $body-color;
+}
+
+.select2-container{
+  margin: 10px 0;
+}
+.select2.select2-container.select2-container--default.select2-container--focus{
+  margin: 10px 0;
+  font-size: 14px;
+  
+  &:focus{
+    outline: none;  
+  }
+}
+.select2.select2-container.select2-container--default{
+  width: 100%!important;
+}
+.select2-container--default .select2-selection--single{
+  border: 1px solid #b0afb9a6!important;
+}
+.select2-selection__rendered{
+  color: $dark-grey;
+}
+.select2-search__field:focus{
+  outline: none;  
 }

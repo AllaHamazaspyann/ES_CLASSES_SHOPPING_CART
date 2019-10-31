@@ -1,4 +1,11 @@
- export const shippingHtml = () => {
+import {getCountries} from './countries';
+
+export const shippingHtml = () => {
+  console.log('shipping');
+  getCountries().then(res => {
+    const selectCountries = document.getElementById('country');
+    res.map(el => selectCountries.insertAdjacentHTML('afterbegin', `<option>${el.name}</option>`))
+  })
     return (`<div class='item__actions--shipping'>
     <h2>Shipping Info</h2>
     <form class='item__actions__form' onsubmit='checkIfEmptyShipping(event)'>
@@ -43,9 +50,9 @@
           value='${state.city}'
           onkeypress='handleChangeShipping(event)'
           >
-      <div class='item__actions__form__error' id='city'></div>    
+      <div class='item__actions__form__error' id='city'></div>   
       <select name='Country' id='country'>
-        <option value=''>Country</option>
+
       </select>
       <div class='item__actions__form__error' id='Country'></div>
       <input type='text' 
@@ -65,14 +72,12 @@
   </div>`)
 }
 
-
 const state = {
   fullName: '',
   address: '',
   city: '',
   phone: '',
   zip: '',
-  Country: ''
 }
 
 const handleChangeShipping = (e) => {
@@ -102,5 +107,9 @@ const checkIfEmptyShipping = (e) => {
   return false;
 }
 
-window.handleChangeShipping  = handleChangeShipping;
+
+
+// countries && countries.map(el => selectCountries.insertAdjacentHTML('afterbegin', `<option>${el.name}</option>`))
+
+window.handleChangeShipping = handleChangeShipping;
 window.checkIfEmptyShipping = checkIfEmptyShipping;

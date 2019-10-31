@@ -44,12 +44,16 @@ export const render = () => {
 }
 
 
+const subtotal = document.getElementById('subtotal');
 
 let total = 0;
 
+const taxes = document.getElementById('taxes').innerText;
+const taxNumbers = taxes.substr(1);
 for(let i =0; i<orderedItems.length; i++){
   total = total + Number(orderedItems[i].price);
 }
-
+subtotal.innerText = '$' + total
+const taxesIncluded = total + Number(taxNumbers);
 const totalRoot = document.getElementById('total-root');
-totalRoot.innerHTML = '$' + total;
+totalRoot.innerHTML = '$' + taxesIncluded;

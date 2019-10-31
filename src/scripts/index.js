@@ -1,9 +1,9 @@
 import '../styles/index.scss';
-import validator from 'validator';
+import {getCountries} from './countries';
 
 import {shippingHtml} from './shipping';
 import {orderDetails} from './orderDetails';
-import billingHtml from './billing';
+import {billingHtml} from './billing';
 import paymentHtml from './payment';
 import {render} from './ordered-items';
 
@@ -24,9 +24,8 @@ class navBar {
 }
 
 const shippingActiveElement = new navBar('shipping', shippingHtml(), rootEl);
-const billingActiveElement = new navBar('billing', billingHtml(), rootEl);
-const paymentActiveElement = new navBar('payment', paymentHtml(), rootEl);
 const detailsActiveElement = new navBar('details', orderDetails(), rootElDetails)
+
 
 shippingActiveElement.returnHtml();
 
@@ -41,23 +40,30 @@ const handleClick = (arg, argthis) => {
   argthis.style.color = '#895acd';
 
   if(arg == 'shipping'){
+    const shippingActiveElement = new navBar('shipping', shippingHtml(), rootEl);
     shippingActiveElement.returnHtml();
   }else if(arg == 'billing'){
+    const billingActiveElement = new navBar('billing', billingHtml(), rootEl);
     billingActiveElement.returnHtml()
   }else if(arg == 'payment'){
+    const paymentActiveElement = new navBar('payment', paymentHtml(), rootEl);
     paymentActiveElement.returnHtml();
   }
+  $('#country').select2();
 }
 
 
 const handlePageChange = (e, type) => {
   e.preventDefault();
   if(type == 'shipping'){
+    const shippingActiveElement = new navBar('shipping', shippingHtml(), rootEl);
     shippingActiveElement.returnHtml();
   }else if(type == 'billing'){
-    billingActiveElement.returnHtml()
+    const billingActiveElement = new navBar('billing', billingHtml(), rootEl);
+    billingActiveElement.returnHtml();
   }else if(type == 'payment'){
-    paymentActiveElement.returnHtml()
+    const paymentActiveElement = new navBar('payment', paymentHtml(), rootEl);
+    paymentActiveElement.returnHtml();
   }else if(type='details'){
     
     detailsActiveElement.returnHtml();
@@ -70,9 +76,8 @@ const handlePageChange = (e, type) => {
 
   [...navParent.children].map(el => el.style.color = '#b0afb9');
   activeNav[0].style.color = '#895acd';
+  $('#country').select2();
 }
-
-
 
 
 const navShipping = document.getElementsByClassName('shipping')[0];
@@ -81,8 +86,13 @@ navShipping.style.color = '#895acd';
 window.handlePageChange  = handlePageChange;
 window.handleClick = handleClick;
 window.render = render;
+window.getCountries = getCountries;
+getCountries();
 render();
 
+$(document).ready(function() {
+  $('#country').select2();
+});
 
 
 

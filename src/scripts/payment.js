@@ -1,5 +1,3 @@
-import validator from 'validator';
-
 const paymentHtml = () => {
     return (`<div class='item__actions--shipping'>
     <h2>Payment</h2>
@@ -16,14 +14,14 @@ const paymentHtml = () => {
     </svg>
     This is a secure 128-bit SSL encrypted payment</div>
     <form class='item__actions__form' onsubmit='checkIfEmptyPayment(event)'>
-      <span>Cardholder Name</span>
+      <label>Cardholder Name</label>
       <input type='text' 
              name='cardholder_name' 
              placeholder='Name as it appears on your card' 
              class='item__actions__form__input--block'
              onkeypress='handleChangePayment(event)'/>
       <div id='cardholder_name' class='item__actions__form__error'></div>
-      <span>Card Number</span>
+      <label>Card Number</label>
       <input type='numer' 
              name='card_number' 
              id='card_number_input'
@@ -32,16 +30,22 @@ const paymentHtml = () => {
              class='item__actions__form__input--block'
              onkeypress='handleChangePayment(event);cc_format(event)'/>
       <div id='card_number' class='item__actions__form__error'></div>
-      <input type='text' 
-             name='empire_date' 
-             placeholder='Empire Date'
-             onkeypress='handleChangePayment(event)'>
-      <div id='empire_date' class='item__actions__form__error'></div>      
-      <input type='text' 
-             name='security_code'
-             placeholder='Security Code'
-             onkeypress='handleChangePayment(event)'>
-      <div id='security_code' class='item__actions__form__error'></div>    
+      <div class='item__actions__form--inline'>
+        <label>Empire Date</label>      
+        <input type='text' 
+               name='empire_date' 
+               placeholder='Empire Date'
+               onkeypress='handleChangePayment(event)'>
+        <div id='empire_date' class='item__actions__form__error'></div>
+      </div>
+      <div class='item__actions__form--inline'>
+        <label>Security Code</label>      
+        <input type='text' 
+               name='security_code'
+               placeholder='Security Code'
+               onkeypress='handleChangePayment(event)'>
+        <div id='security_code' class='item__actions__form__error'></div>  
+      </div>  
       <input id='continue'
         type='submit' 
         value='Pay Securely'
@@ -85,11 +89,6 @@ const checkIfEmptyPayment = (e) => {
   return false;
 }
 
-// const replaceWith = (e) => {
-//  const input =  document.getElementById('card_number');
-//   input.value.replace(/[\D\s\._\-]+/g, e.target.value);
-// }
-
 const cc_format = (e) => {
   const value = e.target.value
   let v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
@@ -101,7 +100,6 @@ const cc_format = (e) => {
       parts.push(match.substring(i, i+4))
   }
   if (parts.length) {
-    console.log(parts.join(' '))
     const cardNumber = document.getElementById('card_number_input');
     const finalValue = parts.join(' ');
     cardNumber.value = finalValue;
@@ -109,8 +107,6 @@ const cc_format = (e) => {
       return value
   }
 }
-
-
 
 window.handleChangePayment  = handleChangePayment;
 window.checkIfEmptyPayment = checkIfEmptyPayment;

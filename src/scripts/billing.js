@@ -1,4 +1,9 @@
-const billingHtml = () => {
+import {getCountries,} from './countries';
+export const billingHtml = () => {
+  getCountries().then(res => {
+    const selectCountries = document.getElementById('country');
+    res.map(el => selectCountries.insertAdjacentHTML('afterbegin', `<option>${el.name}</option>`))
+  })
     return (`<div class='item__actions--shipping'>
     <h2>Billing Information</h2>
     <form class='item__actions__form' onsubmit='checkIfEmptyBilling(event)'>
@@ -32,7 +37,7 @@ const billingHtml = () => {
              onkeypress='handleChangeBilling(event)'/>
       <div id='city' class='item__actions__form__error'></div>          
       <select name='Country' id='country'>
-        <option value=''>Country</option>
+        
       </select>
       <div class='item__actions__form__error' id='Country'></div>
       <input type='text' name='zip' placeholder='ZIP' onkeypress='handleChangeBilling(event)'/>
@@ -53,7 +58,6 @@ const state = {
   city: '',
   phone: '',
   zip: '',
-  Country: ''
 }
 
 const handleChangeBilling = (e) => {
@@ -85,5 +89,3 @@ const checkIfEmptyBilling = (e) => {
 
 window.handleChangeBilling  = handleChangeBilling;
 window.checkIfEmptyBilling = checkIfEmptyBilling;
-
-export default billingHtml;
