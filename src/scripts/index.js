@@ -1,4 +1,5 @@
 import '../styles/index.scss';
+import validator from 'validator';
 
 import {shippingHtml} from './shipping';
 import {orderDetails} from './orderDetails';
@@ -81,5 +82,9 @@ window.handlePageChange  = handlePageChange;
 window.handleClick = handleClick;
 window.render = render;
 render();
+
+
+
+
 
 

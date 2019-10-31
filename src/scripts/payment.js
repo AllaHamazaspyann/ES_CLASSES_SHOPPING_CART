@@ -15,22 +15,75 @@ const paymentHtml = () => {
       </g>
     </svg>
     This is a secure 128-bit SSL encrypted payment</div>
-    <form class='item__actions__form'>
+    <form class='item__actions__form' onsubmit='checkIfEmptyPayment(event)'>
       <span>Cardholder Name</span>
-      <input type='text' placeholder='Name as it appears on your card' class='item__actions__form__input--block'/>
+      <input type='text' 
+             name='cardholder_name' 
+             placeholder='Name as it appears on your card' 
+             class='item__actions__form__input--block'
+             onkeypress='handleChangePayment(event)'/>
+      <div id='cardholder_name' class='item__actions__form__error'></div>
       <span>Card Number</span>
-      <input type='numer' placeholder='XXXX XXXX XXXX XXXX XXXX' class='item__actions__form__input--block'/>
-      
-      <input type='text' placeholder='Empire Date'>
-      <input type='text' placeholder='Security Code'>
+      <input type='numer' 
+             name='card_number' 
+             placeholder='XXXX XXXX XXXX XXXX XXXX' 
+             class='item__actions__form__input--block'
+             onkeypress='handleChangePayment(event)'/>
+      <div id='card_number' class='item__actions__form__error'></div>
+      <input type='text' 
+             name='empire_date' 
+             placeholder='Empire Date'
+             onkeypress='handleChangePayment(event)'>
+      <div id='empire_date' class='item__actions__form__error'></div>      
+      <input type='text' 
+             name='security_code'
+             placeholder='Security Code'
+             onkeypress='handleChangePayment(event)'>
+      <div id='security_code' class='item__actions__form__error'></div>    
       <input id='continue'
         type='submit' 
         value='Pay Securely'
-        onclick='handlePageChange(event, "details")'/>
+        onclick='checkIfEmptyPayment(event)'/>
     </form>
   </div>`)
 }
 
+const state = {
+  security_code: '',
+  empire_date: '',
+  card_number: '',
+  cardholder_name: '',
+}
 
+const handleChangePayment = (e) => {
+
+  const name = e.target.name;
+  const value = e.target.value;
+  state[name] = value;
+  for(let key in state){
+    const elementErr = document.getElementById(`${key}`);
+    if(state[key]){
+      elementErr.innerHTML = '';
+    }
+  }
+}
+
+const checkIfEmptyPayment = (e) => {
+  e.preventDefault();
+  for(let key in state){
+    const elementErr = document.getElementById(`${key}`);
+    if(state[key] == ''){
+      elementErr.innerHTML = `Please enter ${key}`; 
+      false && handlePageChange(event, "details");
+    }else if(state[key]){
+      elementErr.innerHTML = ''; 
+      handlePageChange(event, "details")
+    }
+  }
+  return false;
+}
+
+window.handleChangePayment  = handleChangePayment;
+window.checkIfEmptyPayment = checkIfEmptyPayment;
 
 export default paymentHtml;

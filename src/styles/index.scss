@@ -97,7 +97,7 @@ body {
           input[placeholder="ZIP"]{
             width: 40%;
           }
-          input[type='submit']{
+          input[value='Continue'], input[value='Pay Securely']{
             padding: 12px 20px;
             background-color: #895acd;
             border: 1px solid #895acd;
@@ -107,9 +107,20 @@ body {
             margin-top: 20px;
             display: block;
             cursor: pointer;
+            width: 116px;
             &:hover{
               opacity: 0.9;
             }
+            &:disabled{
+              opacity: 0.6;
+            }
+          }
+          input[value='Pay Securely']{
+            width: 200px;
+          }
+          &__error{
+            color: #f26464;
+            font-size: 12px;
           }
           &__input--block{
             display: block;
