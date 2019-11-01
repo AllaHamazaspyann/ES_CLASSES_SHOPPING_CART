@@ -80,12 +80,15 @@ body {
         }
         .item__actions__form{
           &--inline{
-            display: inline-block;
-            margin-right: 10px;
-            width: 46%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             input{
-              width: 100%;
+              width: 90%;
               margin: 0!important;
+            }
+            &__item{
+              flex-basis: 45%;
             }
           }
           p{
@@ -193,6 +196,7 @@ body {
   label{
     color: $body-color;
     display: block;
+    margin-bottom: 8px;
   }
 }
 

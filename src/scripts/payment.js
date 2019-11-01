@@ -31,21 +31,23 @@ const paymentHtml = () => {
              onkeypress='handleChangePayment(event);cc_format(event)'/>
       <div id='card_number' class='item__actions__form__error'></div>
       <div class='item__actions__form--inline'>
-        <label>Empire Date</label>      
-        <input type='text' 
-               name='empire_date' 
-               placeholder='Empire Date'
-               onkeypress='handleChangePayment(event)'>
-        <div id='empire_date' class='item__actions__form__error'></div>
+          <div class='item__actions__form--inline__item'>
+            <label>Empire Date</label>      
+            <input type='text' 
+                   name='empire_date' 
+                   placeholder='Empire Date'
+                   onkeypress='handleChangePayment(event)'>
+            <div id='empire_date' class='item__actions__form__error'></div>
+          </div>
+          <div class='item__actions__form--inline__item'>
+            <label>Security Code</label>      
+            <input type='text' 
+                   name='security_code'
+                   placeholder='Security Code'
+                   onkeypress='handleChangePayment(event)'>
+            <div id='security_code' class='item__actions__form__error'></div>
+          </div>  
       </div>
-      <div class='item__actions__form--inline'>
-        <label>Security Code</label>      
-        <input type='text' 
-               name='security_code'
-               placeholder='Security Code'
-               onkeypress='handleChangePayment(event)'>
-        <div id='security_code' class='item__actions__form__error'></div>  
-      </div>  
       <input id='continue'
         type='submit' 
         value='Pay Securely'
@@ -69,7 +71,7 @@ const handleChangePayment = (e) => {
   for(let key in state){
     const elementErr = document.getElementById(`${key}`);
     if(state[key]){
-      elementErr.innerHTML = '';
+      elementErr.innerText = '';
     }
   }
 }
@@ -79,10 +81,10 @@ const checkIfEmptyPayment = (e) => {
   for(let key in state){
     const elementErr = document.getElementById(`${key}`);
     if(state[key] == ''){
-      elementErr.innerHTML = `Please enter ${key}`; 
+      elementErr.innerText = `Please enter ${key}`; 
       false && handlePageChange(event, "details");
     }else if(state[key]){
-      elementErr.innerHTML = ''; 
+      elementErr.innerText = ''; 
       handlePageChange(event, "details")
     }
   }
