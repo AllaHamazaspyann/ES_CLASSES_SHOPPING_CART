@@ -37,10 +37,10 @@ export const render = () => {
           $${el.price}
         </div>
       </div>`)
-  ));
+  )).join('');
+
   const itemsRoot = document.getElementById('ordered-items');
   itemsRoot.innerHTML = items;
-  
 }
 
 

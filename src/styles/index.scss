@@ -144,7 +144,7 @@ body {
     }
     .orders{
       &__wrapper{
-        padding-bottom: 8px;
+        padding: 8px 0;
         border-bottom: 1px solid #d8d9da;
         color: $grey;
         display: flex;
