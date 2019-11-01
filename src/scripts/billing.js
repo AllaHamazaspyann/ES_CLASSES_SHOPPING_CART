@@ -9,6 +9,7 @@ export const billingHtml = () => {
     <form class='item__actions__form' onsubmit='checkIfEmptyBilling(event)'>
       <span>Billing Contact</span>
       <input name='fullName'
+             value='${state.fullName}'
              type='text'
              placeholder='Full Name'
              class='item__actions__form__input--block'
@@ -17,11 +18,13 @@ export const billingHtml = () => {
       <input type='text'
              placeholder='Email Address'
              name='email_address'
+             value='${state.email_address}'
              onkeypress='handleChangeBilling(event)'/>
       <div id='email_address' class='item__actions__form__error'></div>
       <span>Billing Address</span>
       <input type='text' 
              placeholder='Street Address'
+             value='${state.street_address}'
              class='item__actions__form__input--block'
              onkeypress='handleChangeBilling(event)'
              name='street_address'/>
@@ -31,6 +34,7 @@ export const billingHtml = () => {
              class='item__actions__form__input--block'
             />
       <input type='text' 
+             value='${state.city}'
              placeholder='City' 
              name='city'
              class='item__actions__form__input--block'
@@ -40,7 +44,11 @@ export const billingHtml = () => {
         
       </select>
       <div class='item__actions__form__error' id='Country'></div>
-      <input type='text' name='zip' placeholder='ZIP' onkeypress='handleChangeBilling(event)'/>
+      <input type='text' 
+             name='zip' 
+             placeholder='ZIP' 
+             value='${state.zip}'
+             onkeypress='handleChangeBilling(event)'/>
       <div id='zip' class='item__actions__form__error'></div>
       <input id='continue'
              type='submit'
